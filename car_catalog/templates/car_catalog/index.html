@@ -1,0 +1,37 @@
+{% extends 'car_catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <p>Explore our selection of cars or add a new one to the catalog.</p>
+
+    {% if not cars %}
+        <p>No cars available.</p>
+    {% else %}
+        <h2>Available Cars</h2>
+        <div class="car-list">
+            {% for car in cars %}
+            <div class="car-card">
+                {% if car.image %}
+                    <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }} ({{ car.year }})">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
+                <p>Price: ${{ car.price }}</p>
+                <p>Availability: {% if car.new %}New{% else %}Used{% endif %}</p>
+                {% if admin_logged_in %}
+                    <a href="{% url 'delete_car' car.id %}" class="button">Delete</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+
+<div class="button-container">
+    {% if admin_logged_in %}
+        <a href="{% url 'add_car' %}" class="button">Add Car</a>
+    {% endif %}
+</div>
+{% endblock %}

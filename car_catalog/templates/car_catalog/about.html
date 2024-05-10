@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to The Dealers</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'add_car' %}">Add Car</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about.container">
+            <h2>The Dealers</h2>
+            <div class="location-info">
+                <h3>Our Address</h3>
+                <p>250 Broad St, New Castle, Indiana</p>
+                <p>Phone: (765)575-9811</p>
+                <p>Hours: Monday - Saturday, 9am - 6pm</p>
+            </div>
+            <div class="location-map">
+                <!-- Replace with an embedded Google Maps or other map -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12237.79040782537!2d-85.38403290646653!3d39.9313765504969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x881533a7e5a3b451%3A0x4218ee1259e6b683!2sRuss%20Hubler%20Chrysler%20Dodge%20Jeep%20Ram!5e0!3m2!1sen!2sus!4v1715323815497!5m2!1sen!2sus"  class="map-frame" allowfullscreen="" loading="lazy"></iframe>
+            </div>                        
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Car Dealership</p>
+    </footer>
+</body>
+</html>

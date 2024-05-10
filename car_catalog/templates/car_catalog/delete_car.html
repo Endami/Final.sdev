@@ -1,0 +1,23 @@
+{% extends 'car_catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Delete Car</h2>
+    <p>Are you sure you want to delete the following car?</p>
+    <div class="car-card">
+        {% if car.image %}
+            <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }} ({{ car.year }})">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+        <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
+        <p>Price: ${{ car.price }}</p>
+        <p>Availability: {% if car.new %}New{% else %}Used{% endif %}</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button">Confirm Delete</button>
+        <a href="{% url 'index' %}" class="button">Cancel</a>
+    </form>
+</div>
+{% endblock %}
